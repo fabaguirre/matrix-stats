@@ -1,5 +1,6 @@
 import express from 'express';
 
+import errorHandler from '@/middleware/errorHandler';
 import matrixRoutes from '@/routes/matrix';
 
 const app = express();
@@ -12,5 +13,7 @@ app.get('/status', (_req, res) => {
 });
 
 app.use('/api/matrix', matrixRoutes);
+
+app.use(errorHandler);
 
 export default app;
