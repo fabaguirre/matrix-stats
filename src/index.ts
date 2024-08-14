@@ -1,12 +1,5 @@
-import express, { Request, Response } from 'express';
+import app from '@/app';
 
-const app = express();
-const port = process.env.PORT || 3000;
-
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hello, TypeScript Express!!!');
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(app.get('port'), () => {
+  console.log(`Server running on port ${app.get('port')}`);
 });
