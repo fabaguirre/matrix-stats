@@ -8,7 +8,7 @@ export const success = ({
   data,
   message,
 }: {
-  data: unknown;
+  data?: unknown;
   message?: string;
 }) => {
   return {
