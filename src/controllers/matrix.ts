@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 
+import { calculateMatrixStats } from '@/service/matrix';
 import { validateMatrix } from '@/validators/matrix';
 
 export const getMatrixStats = (
@@ -9,7 +10,9 @@ export const getMatrixStats = (
 ) => {
   try {
     const matrix = validateMatrix(req.body.matrix);
-    res.status(200).send({ matrix });
+
+    const stats = calculateMatrixStats(matrix);
+    res.status(200).send(stats);
   } catch (error) {
     next(error);
   }
