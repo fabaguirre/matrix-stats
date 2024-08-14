@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import { ValiError } from 'valibot';
 
-import { STATUS_CODES } from '@/service/response';
+import { STATUS_CODES, error } from '@/service/response';
 
 function errorHandler(
   err: Error,
@@ -18,7 +18,12 @@ function errorHandler(
     message = err.message;
   }
 
-  res.status(status).send({ errors: [{ message }] });
+  res.status(status).send(
+    error({
+      message,
+      status,
+    }),
+  );
 }
 
 export default errorHandler;
