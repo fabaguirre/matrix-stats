@@ -67,11 +67,11 @@ API that receives matrix data, computes statistical metrics including max, min, 
 1. Build the Docker image:
 
     ```bash
-    docker build -t matrix-stats-express . 
+    docker build -t matrix-stats . 
     ```
 
 2. Run the Docker container:
 
     ```bash
-    docker run -p 3000:3000 -e PORT=3000 express-app  
+    docker run -d --name matrix-stats-express --network my-network -p 3000:3000 matrix-stats  
     ```
